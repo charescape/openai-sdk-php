@@ -16,6 +16,7 @@ function chatCompletion(): array
                 'message' => [
                     'role' => 'assistant',
                     'content' => "\n\nHello there, how may I assist you today?",
+                    'reasoning_content' => null,
                 ],
                 'finish_reason' => 'stop',
             ],
@@ -53,6 +54,7 @@ function chatCompletionWithSystemFingerprint(): array
                 'message' => [
                     'role' => 'assistant',
                     'content' => "\n\nHello there, how may I assist you today?",
+                    'reasoning_content' => null,
                 ],
                 'finish_reason' => 'stop',
             ],
