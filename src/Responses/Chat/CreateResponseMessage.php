@@ -12,12 +12,13 @@ final class CreateResponseMessage
     private function __construct(
         public readonly string $role,
         public readonly ?string $content,
+        public readonly ?string $reasoning_content,
         public readonly array $toolCalls,
         public readonly ?CreateResponseFunctionCall $functionCall,
     ) {}
 
     /**
-     * @param  array{role: string, content: ?string, function_call: ?array{name: string, arguments: string}, tool_calls: ?array<int, array{id: string, type: string, function: array{name: string, arguments: string}}>}  $attributes
+     * @param  array{role: string, content: ?string, reasoning_content: ?string, function_call: ?array{name: string, arguments: string}, tool_calls: ?array<int, array{id: string, type: string, function: array{name: string, arguments: string}}>}  $attributes
      */
     public static function from(array $attributes): self
     {
@@ -28,6 +29,7 @@ final class CreateResponseMessage
         return new self(
             $attributes['role'],
             $attributes['content'] ?? null,
+            $attributes['reasoning_content'] ?? null,
             $toolCalls,
             isset($attributes['function_call']) ? CreateResponseFunctionCall::from($attributes['function_call']) : null,
         );
@@ -41,6 +43,7 @@ final class CreateResponseMessage
         $data = [
             'role' => $this->role,
             'content' => $this->content,
+            'reasoning_content' => $this->reasoning_content,
         ];
 
         if ($this->functionCall instanceof CreateResponseFunctionCall) {
