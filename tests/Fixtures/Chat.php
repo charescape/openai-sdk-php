@@ -83,6 +83,7 @@ function chatCompletionWithFunction(): array
                 'message' => [
                     'role' => 'assistant',
                     'content' => null,
+                    'reasoning_content' => null,
                     'function_call' => [
                         'name' => 'get_current_weather',
                         'arguments' => "{\n  \"location\": \"Boston, MA\"\n}",
@@ -115,6 +116,7 @@ function chatCompletionWithToolCalls(): array
                 'message' => [
                     'role' => 'assistant',
                     'content' => null,
+                    'reasoning_content' => null,
                     'tool_calls' => [
                         [
                             'id' => 'call_trlgKnhMpYSC7CFXKw3CceUZ',
